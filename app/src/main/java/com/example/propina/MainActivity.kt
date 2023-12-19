@@ -1,4 +1,4 @@
-package com.example.tiptime
+package com.example.propina
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -41,7 +41,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.propina.R
+
 import com.example.propina.ui.theme.PropinaTheme
 
 import java.text.NumberFormat
@@ -65,10 +65,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TipTimeLayout() {
     var amountInput by remember { mutableStateOf("") }
+    val amount = amountInput.toDoubleOrNull() ?: 0.0
     var tipInput by remember { mutableStateOf("") }
     var roundUp by remember { mutableStateOf(false) }
 
-    val amount = amountInput.toDoubleOrNull() ?: 0.0
+
     val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
     val tip = calculateTip(amount, tipPercent, roundUp)
 
